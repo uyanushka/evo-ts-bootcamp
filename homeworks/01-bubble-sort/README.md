@@ -1,5 +1,7 @@
 # Bubble Sort Visualization
 
+App is published to http://uy_bubbles.surge.sh
+
 ## Available Scripts
 
 In the project directory, you can run:
