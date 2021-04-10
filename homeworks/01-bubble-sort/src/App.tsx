@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {Visualizer} from "./Components/Visualizer";
 import {GenerateRandomArray} from "./Utils/RandomArrayGenerator";
+import {SortElementsByHeight} from "./Utils/ArraySorter";
 
 export interface AppProps {
     arraySize: number;
@@ -20,13 +21,18 @@ class App extends React.Component<AppProps, AppState> {
         this.setState({numberArray: GenerateRandomArray(this.props.arraySize)});
     }
 
+    private sort(): void {
+        const elements = Array.from(document.querySelectorAll("#visualizer .element")).map((el) => el as HTMLElement);
+        SortElementsByHeight(elements);
+    }
+
     render(): JSX.Element {
         return <div className="App">
             <header className="pageHeader">Bubble sort 🛁</header>
             <Visualizer numberArray={this.state.numberArray}/>
             <div id="controls">
                 <button onClick={this.newSet.bind(this)}>New set</button>
-                <button>Start</button>
+                <button onClick={this.sort}>Start</button>
             </div>
             <div id="status">Not started</div>
         </div>
