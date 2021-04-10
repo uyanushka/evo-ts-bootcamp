@@ -3,6 +3,7 @@ import './App.css';
 import {Visualizer} from "./Components/Visualizer";
 import {GenerateRandomArray} from "./Utils/RandomArrayGenerator";
 import {SortElementsByHeight} from "./Utils/ArraySorter";
+import {SwapInterval} from "./consts";
 
 export interface AppProps {
     arraySize: number;
@@ -23,7 +24,7 @@ class App extends React.Component<AppProps, AppState> {
 
     private sort(): void {
         const elements = Array.from(document.querySelectorAll("#visualizer .element")).map((el) => el as HTMLElement);
-        SortElementsByHeight(elements);
+        SortElementsByHeight(elements, SwapInterval);
     }
 
     render(): JSX.Element {
