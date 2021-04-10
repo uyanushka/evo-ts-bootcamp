@@ -1,9 +1,9 @@
-import {ArraySize, VisualizerHeight} from "../consts";
+import {VisualizerHeight} from "../consts";
 
-export function GenerateRandomArray(): number[] {
+export function GenerateRandomArray(arraySize: number): number[] {
     const numberArray: number[] = [];
 
-    for (let i = 0; i <= ArraySize; i++){
+    for (let i = 0; i <= arraySize; i++) {
         const num = Math.random();
         numberArray.push(Math.round(num * VisualizerHeight));
     }

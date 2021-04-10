@@ -1,13 +1,16 @@
 import React, {CSSProperties} from "react";
-import {GenerateRandomArray} from "../Utils/RandomArrayGenerator";
 import "./Visualizer.css";
 import {VisualizerHeight} from "../consts";
 
-export class Visualizer extends React.Component {
-    generateElements(): JSX.Element[] {
-        const randomArray = GenerateRandomArray();
+export interface VisualizerProps {
+    numberArray: number[]
+}
 
-        const elementsArray = randomArray.map((number, index) => {
+export function Visualizer(props: VisualizerProps): JSX.Element {
+    const {numberArray} = props;
+
+    const generateElements = (): JSX.Element[] => {
+        const elementsArray = numberArray.map((number, index) => {
             const elStyle: CSSProperties = {height: `${number}px`};
             return <div key={index} className={"element"} style={elStyle}/>
         });
@@ -15,13 +18,9 @@ export class Visualizer extends React.Component {
         return elementsArray;
     }
 
-    render(): JSX.Element {
-        const elements = this.generateElements();
+    const visStyle: CSSProperties = {height: `${VisualizerHeight}px`};
 
-        const visStyle: CSSProperties = {height: `${VisualizerHeight}px`};
-
-        return <div id="visualizer" style={visStyle}>
-            {elements}
-        </div>
-    }
+    return <div id="visualizer" style={visStyle}>
+        {generateElements()}
+    </div>
 }
