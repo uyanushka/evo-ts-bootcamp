@@ -1,6 +1,6 @@
 import {VisualisationDelay} from "./VisualisationDelay";
 
-export async function SortElementsByHeight(unsortedArray: HTMLElement[], swapInterval: number): Promise<void> {
+export async function SortElementsByHeight(unsortedArray: HTMLElement[], swapInterval: number): Promise<boolean> {
     const sorted = unsortedArray.slice();
 
     for (let i = 0; i < sorted.length; i++) {
@@ -11,6 +11,8 @@ export async function SortElementsByHeight(unsortedArray: HTMLElement[], swapInt
             }
         }
     }
+
+    return true;
 }
 
 function getHeightOfElement(element: HTMLElement): number {

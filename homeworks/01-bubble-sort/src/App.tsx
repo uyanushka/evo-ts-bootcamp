@@ -3,28 +3,37 @@ import './App.css';
 import {Visualizer} from "./Components/Visualizer";
 import {GenerateRandomArray} from "./Utils/RandomArrayGenerator";
 import {SortElementsByHeight} from "./Utils/ArraySorter";
-import {SwapInterval} from "./consts";
+import {Status, SwapInterval} from "./consts";
 
 export interface AppProps {
     arraySize: number;
 }
 
 export interface AppState {
-    numberArray: number[]
+    numberArray: number[];
+    status: Status;
 }
 
 class App extends React.Component<AppProps, AppState> {
     state = {
-        numberArray: GenerateRandomArray(this.props.arraySize)
+        numberArray: GenerateRandomArray(this.props.arraySize),
+        status: Status.NotSolved
     }
 
     private newSet(): void {
-        this.setState({numberArray: GenerateRandomArray(this.props.arraySize)});
+        this.setState({
+            numberArray: GenerateRandomArray(this.props.arraySize),
+            status: Status.NotSolved
+        });
     }
 
-    private sort(): void {
+    private async sort(): Promise<void> {
         const elements = Array.from(document.querySelectorAll("#visualizer .element")).map((el) => el as HTMLElement);
-        SortElementsByHeight(elements, SwapInterval);
+        await SortElementsByHeight(elements, SwapInterval);
+
+        this.setState({
+            status: Status.Sorted
+        });
     }
 
     render(): JSX.Element {
@@ -33,9 +42,9 @@ class App extends React.Component<AppProps, AppState> {
             <Visualizer numberArray={this.state.numberArray}/>
             <div id="controls">
                 <button onClick={this.newSet.bind(this)}>New set</button>
-                <button onClick={this.sort}>Start</button>
+                <button onClick={this.sort.bind(this)} disabled={this.state.status === Status.Sorted}>Start</button>
             </div>
-            <div id="status">Not started</div>
+            <div id="status">{this.state.status}</div>
         </div>
     }
 }
