@@ -1,27 +1,21 @@
 import {TraverseType} from "./consts";
 
 export interface IBinaryTree<T> {
-    constructor(tree: ITreeNode<T>): void;
-
     setTree(tree: ITreeNode<T>): this;
 
-    traverse(traverseType: TraverseType): ITreeNodeValue<T>[];
+    traverse(traverseType: TraverseType): T[];
 
-    getColumn(columnOrder: number): ITreeNodeValue<T>[];
+    getColumn(columnOrder: number): T[];
 }
 
 export interface IBinarySearchTree<T> extends IBinaryTree<T> {
-    has(value: number): boolean;
+    has(value: T): boolean;
 }
 
 export interface ITreeNode<T> {
-    value: ITreeNodeValue<T>;
+    value: T;
 
     left?: ITreeNode<T>;
 
     right?: ITreeNode<T>;
-}
-
-export interface ITreeNodeValue<T> {
-    value: T;
 }
