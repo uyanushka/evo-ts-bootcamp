@@ -20,7 +20,7 @@ class App extends React.Component<AppProps, AppState> {
         status: Status.NotSolved
     }
 
-    private newSet(): void {
+    private newSet = (): void => {
         this.setState({
             numberArray: GenerateRandomArray(this.props.arraySize),
             status: Status.NotSolved
@@ -28,6 +28,10 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     private async sort(): Promise<void> {
+        this.setState({
+            status: Status.InProgress
+        });
+
         const elements = Array.from(document.querySelectorAll("#visualizer .element")).map((el) => el as HTMLElement);
         await SortElementsByHeight(elements, SwapInterval);
 
@@ -41,8 +45,8 @@ class App extends React.Component<AppProps, AppState> {
             <header className="pageHeader">Bubble sort 🛁</header>
             <Visualizer numberArray={this.state.numberArray}/>
             <div id="controls">
-                <button onClick={this.newSet.bind(this)}>New set</button>
-                <button onClick={this.sort.bind(this)} disabled={this.state.status === Status.Sorted}>Start</button>
+                <button onClick={this.newSet} disabled={this.state.status === Status.InProgress}>New set</button>
+                <button onClick={this.sort.bind(this)} disabled={this.state.status !== Status.NotSolved}>Start</button>
             </div>
             <div id="status">{this.state.status}</div>
         </div>
