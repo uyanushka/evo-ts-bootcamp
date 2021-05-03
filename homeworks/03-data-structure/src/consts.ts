@@ -1,6 +1,6 @@
 export enum TraverseType{
-    BFS,
-    IN_DFS,
-    PRE_DFS,
-    POST_DFS
+    bfs,
+    in_dfs,
+    pre_dfs,
+    post_dfs
 }

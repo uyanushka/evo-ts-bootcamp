@@ -25,27 +25,27 @@ describe("BinaryTree", () => {
         expect(tree.getTree()).toEqual(replacementTreeNode);
     });
 
-    test("traverse with param 'BFS' calls correct algorithm", () => {
+    test("traverse with param 'bfs' calls correct algorithm", () => {
         const tree = new BinaryTree({value: 5});
-        tree.traverse(TraverseType.BFS);
+        tree.traverse(TraverseType.bfs);
         expect(BFS).toHaveBeenCalledTimes(1);
     });
 
-    test("traverse with param 'POST_DFS' calls correct algorithm", () => {
+    test("traverse with param 'post_dfs' calls correct algorithm", () => {
         const tree = new BinaryTree({value: 5});
-        tree.traverse(TraverseType.POST_DFS);
+        tree.traverse(TraverseType.post_dfs);
         expect(PostorderedDFS).toHaveBeenCalledTimes(1);
     });
 
-    test("traverse with param 'PRE_DFS' calls correct algorithm", () => {
+    test("traverse with param 'pre_dfs' calls correct algorithm", () => {
         const tree = new BinaryTree({value: 5});
-        tree.traverse(TraverseType.PRE_DFS);
+        tree.traverse(TraverseType.pre_dfs);
         expect(PreorderedDFS).toHaveBeenCalledTimes(1);
     });
 
-    test("traverse with param 'IN_DFS' calls correct algorithm", () => {
+    test("traverse with param 'in_dfs' calls correct algorithm", () => {
         const tree = new BinaryTree({value: 5});
-        tree.traverse(TraverseType.IN_DFS);
+        tree.traverse(TraverseType.in_dfs);
         expect(InorderedDFS).toHaveBeenCalledTimes(1);
     });
 

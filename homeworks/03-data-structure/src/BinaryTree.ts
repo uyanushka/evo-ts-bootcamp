@@ -20,16 +20,16 @@ export class BinaryTree<T> implements IBinaryTree<T> {
 
     public traverse(traverseType: TraverseType): T[] {
         switch (traverseType) {
-            case TraverseType.PRE_DFS:
+            case TraverseType.pre_dfs:
                 return PreorderedDFS(this.tree);
 
-            case TraverseType.IN_DFS:
+            case TraverseType.in_dfs:
                 return InorderedDFS(this.tree);
 
-            case TraverseType.POST_DFS:
+            case TraverseType.post_dfs:
                 return PostorderedDFS(this.tree);
 
-            case TraverseType.BFS:
+            case TraverseType.bfs:
                 return BFS(this.tree);
         }
     }
