@@ -5,10 +5,10 @@ interface TotalPriceProps {
     price: number;
 }
 
-export function TotalPrice({ price }: TotalPriceProps) {
+export function TotalPrice({price}: TotalPriceProps) {
     return (
         <div className="flex">
-            <span>Total price:</span><PizzaPrice price={price} />
+            <span>Total price:</span><PizzaPrice price={price}/>
         </div>
     );
 }

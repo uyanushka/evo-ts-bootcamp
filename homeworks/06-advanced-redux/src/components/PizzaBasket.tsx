@@ -4,7 +4,7 @@ import {Pizza} from "../types";
 import {PizzaBasketItem} from "./PizzaBasketItem";
 
 interface PizzaBucketProps {
-    pizza: Array<Pizza & {count: number}>,
+    pizza: Array<Pizza & { count: number }>,
     onMinus: (_id: string) => void;
 }
 

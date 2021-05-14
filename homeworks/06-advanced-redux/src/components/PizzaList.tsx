@@ -1,5 +1,5 @@
 import React from "react";
-import { PizzaItem } from "./PizzaItem";
+import {PizzaItem} from "./PizzaItem";
 import * as R from "ramda";
 
 interface PizzaListProps {
@@ -11,7 +11,7 @@ interface PizzaListProps {
     onAdd: (_id: string) => void;
 }
 
-export function PizzaList({ pizza, onAdd }: PizzaListProps) {
+export function PizzaList({pizza, onAdd}: PizzaListProps) {
     return R.map((p) =>
         <PizzaItem
             key={p._id}
